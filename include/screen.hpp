@@ -46,6 +46,9 @@ public :
 		int size;
 		if (file.is_open()) {
 			while (getline(file, currentLine)) {
+				while (currentLine.find("\r") != std::string::npos) {
+					currentLine.erase(currentLine.find("\r"), 1);
+				}
 				data.push_back(currentLine);
 			}
 		}
